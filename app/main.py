@@ -21,20 +21,21 @@ from DiceGameEngine import DiceGameEngine
 def start_game():
     engine = DiceGameEngine(sides=26)
     while True:
-    
-        input("Drücke Enter, um zu würfeln...")
-        result = engine.roll()
-        print(f"Du hast eine {result} gewürfelt!")
-        cont = input("Möchtest du erneut würfeln? (j/n): ")
-        if cont.lower() != 'j':
-            break
-    print("Danke fürs Spielen! Hier sind deine Statistiken:")
-    print(engine.stats)
-    distribution = engine.stats.get_distribution()
-    print("Verteilung der Ergebnisse:")
-    for side, freq in distribution.items():
-        print(f"{side}: {freq:.2%}")    
-
+        choice = input("Drücke [N], um zu würfeln, [Q] zum Beenden, [S] zum Anzeigen der Statistiken ...")
+        match choice.lower():
+            case "n":
+                result = engine.roll()
+                print(f"Du hast eine {result} gewürfelt!")
+            case "s":
+                distribution = engine.stats.get_distribution()
+                print("Aktuelle Verteilung:")
+                for side, freq in distribution.items():
+                    print(f"{side}: {freq:.2%}")
+            case "q":
+                print("Danke fürs Spielen! Auf Wiedersehen!")
+                break
+            case _:
+                print("Ungültige Eingabe. Bitte versuche es erneut.")
 
 if __name__ == "__main__":
     start_game()
