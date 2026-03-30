@@ -8,7 +8,7 @@ from dataclasses import dataclass, field
 @dataclass
 class DiceGameEngine():
     sides: int = 6
-    stats: DiceStatistik = field(init=False)
+    stats: DiceStatistik = field(init=False) 
 
     def __post_init__(self):
         self.stats = DiceStatistik(sides=self.sides)

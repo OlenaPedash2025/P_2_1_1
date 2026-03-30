@@ -30,6 +30,10 @@ def start_game():
             break
     print("Danke fürs Spielen! Hier sind deine Statistiken:")
     print(engine.stats)
+    distribution = engine.stats.get_distribution()
+    print("Verteilung der Ergebnisse:")
+    for side, freq in distribution.items():
+        print(f"{side}: {freq:.2%}")    
 
 
 if __name__ == "__main__":
