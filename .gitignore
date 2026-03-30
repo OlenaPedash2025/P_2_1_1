@@ -13,6 +13,7 @@ env/
 
 *.db
 *.sqlite3
+saves/
 
 
 .vscode/launch.json
