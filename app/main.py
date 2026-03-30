@@ -19,7 +19,7 @@ from DiceGameEngine import DiceGameEngine
 
 
 def start_game():
-    engine = DiceGameEngine(sides=26)
+    engine = DiceGameEngine(sides=6)
     while True:
         choice = input("Drücke [N], um zu würfeln, [Q] zum Beenden, [S] zum Anzeigen der Statistiken ...")
         match choice.lower():
@@ -31,6 +31,9 @@ def start_game():
                 print("Aktuelle Verteilung:")
                 for side, freq in distribution.items():
                     print(f"{side}: {freq:.2%}")
+                print("Häufigkeit der Ergebnisse:")
+                for side, count in engine.stats.counts.items():
+                    print(f"{side}: {count} mal")
             case "q":
                 print("Danke fürs Spielen! Auf Wiedersehen!")
                 break
